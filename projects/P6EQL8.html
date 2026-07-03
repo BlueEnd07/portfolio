@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cetaphil — Lokesh Rawat</title>
+<meta name="description" content="Cetaphil — a 3D project by Lokesh Rawat.">
+<style>
+  :root{
+    --bg:#faf7f1; --ink:#1c1b18; --muted:#77726a; --line:#e7e1d6;
+    --coral:#ff6b57; --sun:#ffc94d; --sky:#4d9de0; --leaf:#3fa66a; --grape:#9a6bd6;
+    --radius:22px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  ::selection{background:var(--sun);color:var(--ink)}
+  nav{
+    position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:100;
+    display:flex;align-items:center;gap:6px;
+    background:rgba(250,247,241,.85);backdrop-filter:blur(10px);
+    border:1.5px solid var(--ink);border-radius:999px;padding:8px 10px;
+    box-shadow:4px 4px 0 var(--ink);max-width:94vw;
+  }
+  nav a{color:var(--ink);text-decoration:none;font-size:.85rem;font-weight:600;
+    padding:6px 14px;border-radius:999px;transition:background .2s;white-space:nowrap}
+  nav a:hover{background:var(--sun)}
+  nav a.brand{background:var(--ink);color:var(--bg)}
+  nav a.brand:hover{background:var(--coral)}
+  main{max-width:980px;margin:0 auto;padding:130px 6vw 60px}
+  .kicker{
+    display:inline-block;border:1.5px solid var(--ink);border-radius:999px;
+    padding:4px 16px;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    transform:rotate(-1.5deg);box-shadow:3px 3px 0 var(--ink);margin-bottom:18px;
+    background:var(--coral);color:#fff;
+  }
+  h1{font-size:clamp(2rem,5.5vw,3.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:14px}
+  .meta{color:var(--muted);font-size:.92rem;margin-bottom:26px}
+  .desc-card{
+    background:#fff;border:1.5px solid var(--ink);border-radius:var(--radius);
+    box-shadow:5px 5px 0 var(--ink);padding:clamp(20px,3.5vw,34px);margin-bottom:22px;
+  }
+  .desc-card p{color:var(--muted);margin-bottom:12px}
+  .desc-card p:last-child{margin-bottom:0}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 40px}
+  .chip{background:#fff;border:1.5px solid var(--ink);border-radius:999px;
+    padding:6px 15px;font-size:.82rem;font-weight:600;box-shadow:2px 2px 0 var(--ink)}
+  .chip.tool{background:var(--sun)}
+  .gallery{display:flex;flex-direction:column;gap:24px;margin-bottom:48px}
+  .gallery img{
+    width:100%;display:block;border:1.5px solid var(--ink);border-radius:var(--radius);
+    background:#fff;
+  }
+  .watch{
+    display:block;text-align:center;text-decoration:none;position:relative;
+    border-radius:var(--radius);overflow:hidden;border:1.5px solid var(--ink);
+  }
+  .watch img{border:none;border-radius:0}
+  .watch span{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    background:var(--sun);border:1.5px solid var(--ink);border-radius:999px;
+    padding:12px 28px;font-weight:800;color:var(--ink);box-shadow:4px 4px 0 var(--ink);
+    font-size:1.05rem;
+  }
+  .btn{
+    display:inline-block;padding:12px 26px;border-radius:999px;text-decoration:none;
+    font-weight:700;font-size:.95rem;border:1.5px solid var(--ink);color:var(--ink);
+    background:var(--bg);box-shadow:3px 3px 0 var(--ink);
+    transition:transform .15s,box-shadow .15s,background .2s;
+  }
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+  .btn.fill{background:var(--coral);color:#fff}
+  .btn.fill:hover{background:var(--ink)}
+  .actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:70px}
+  .pager{
+    display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    border-top:1.5px solid var(--line);padding-top:28px;
+  }
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:40px 6vw}
+</style>
+</head>
+<body>
+<nav>
+  <a class="brand" href="../index.html">LR ✦</a>
+  <a href="../index.html#renders">← All renders</a>
+  <a href="https://lokesh-rawat.artstation.com" target="_blank" rel="noopener">ArtStation ↗</a>
+</nav>
+<main>
+  <span class="kicker">🧼 Project</span>
+  <h1>Cetaphil</h1>
+  <p class="meta">Published 2025-01-15 · Personal work</p>
+  <div class="desc-card"><p>This project features a professional product advertisement visual for Cetaphil Gentle Skin Cleanser. The composition highlights the product prominently against a clean and vibrant backdrop, emphasizing a "Flat 25% Off" promotion. The design balances aesthetic appeal and functionality, making it ideal for marketing and digital campaigns.
+<br /> Process
+<br />Blender:
+<br />Modeled and arranged the product bottles and props, focusing on realistic proportions and materials.
+<br />Applied textures and shaders to create a clean and soft aesthetic, matching the brand's identity.
+<br />Crafted a custom lighting setup for even illumination, ensuring the product's details and textures were emphasized.
+<br />Rendered the scene in high resolution for post-production refinement.
+<br />Photoshop:
+<br />Enhanced the colors and added finishing touches to highlight the key elements.
+<br />Integrated the "Flat 25% Off" promotional text and background design with smooth, modern shapes to attract attention.
+<br />Adjusted the overall composition to ensure brand consistency and readability.
+<br />Outcome
+<br />The final visual is an eye-catching, professional advertisement showcasing Cetaphil Gentle Skin Cleanser. The design successfully communicates the promotional message while maintaining a clean, modern aesthetic that resonates with the target audience. It’s an ideal piece for use in digital platforms such as e-commerce websites, social media campaigns, or email marketing materials.
+<br />Let me know if you'd like to refine this description further!</p></div>
+  <div class="chips"><span class="chip tool">Blender</span><span class="chip">Advertisement style</span><span class="chip">Composition</span><span class="chip">Lighting</span></div>
+  <div class="gallery"><img src="../assets/artstation/P6EQL8_0.jpg" alt="Cetaphil — image 1" loading="lazy">
+<img src="../assets/artstation/P6EQL8_1.jpg" alt="Cetaphil — image 2" loading="lazy">
+<img src="../assets/artstation/P6EQL8_2.jpg" alt="Cetaphil — image 3" loading="lazy">
+<img src="../assets/artstation/P6EQL8_3.jpg" alt="Cetaphil — image 4" loading="lazy">
+<img src="../assets/artstation/P6EQL8_4.jpg" alt="Cetaphil — image 5" loading="lazy">
+</div>
+  <div class="actions">
+    <a class="btn fill" href="https://www.artstation.com/artwork/P6EQL8" target="_blank" rel="noopener">View on ArtStation ↗</a>
+    <a class="btn" href="../index.html#renders">Back to all renders</a>
+  </div>
+  <div class="pager">
+    <a class="btn" href="K3E069.html">← Dr. Blender Face Serum</a>
+    <a class="btn" href="XJgW8R.html">Hydrocre+ Pills →</a>
+  </div>
+</main>
+<footer>© 2026 Lokesh Rawat — made with Blender &amp; snacks 🍪</footer>
+</body>
+</html>

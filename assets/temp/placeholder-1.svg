@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 430">
+<rect width="600" height="430" fill="#ffd9cf"/>
+<circle cx="300" cy="215" r="90" fill="#ff6b57" opacity=".85"/><circle cx="268" cy="195" r="12" fill="#fff"/><circle cx="332" cy="195" r="12" fill="#fff"/><path d="M258 245 Q300 285 342 245" stroke="#fff" stroke-width="10" fill="none" stroke-linecap="round"/>
+<text x="300" y="382" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22" font-weight="600" fill="#ff6b57">your work goes here</text>
+</svg>

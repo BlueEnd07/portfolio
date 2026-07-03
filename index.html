@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lokesh Rawat — 3D Artist</title>
+<meta name="description" content="Portfolio of Lokesh Rawat — 3D artist and generalist. Renders, experiments and playful pixels.">
+<style>
+  :root{
+    --bg:#faf7f1;
+    --ink:#1c1b18;
+    --muted:#77726a;
+    --line:#e7e1d6;
+    --coral:#ff6b57;
+    --sun:#ffc94d;
+    --sky:#4d9de0;
+    --leaf:#3fa66a;
+    --grape:#9a6bd6;
+    --radius:22px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  ::selection{background:var(--sun);color:var(--ink)}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:100;
+    display:flex;align-items:center;gap:6px;
+    background:rgba(250,247,241,.85);backdrop-filter:blur(10px);
+    border:1.5px solid var(--ink);border-radius:999px;
+    padding:8px 10px;box-shadow:4px 4px 0 var(--ink);
+    max-width:94vw;
+  }
+  nav a{
+    color:var(--ink);text-decoration:none;font-size:.85rem;font-weight:600;
+    padding:6px 14px;border-radius:999px;transition:background .2s;white-space:nowrap;
+  }
+  nav a:hover{background:var(--sun)}
+  nav a.brand{background:var(--ink);color:var(--bg)}
+  nav a.brand:hover{background:var(--coral)}
+  @media(max-width:620px){nav a:not(.brand):not(:nth-child(2)):not(:last-child){display:none}}
+
+  /* ---------- hero ---------- */
+  header{
+    min-height:92svh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:120px 6vw 60px;position:relative;overflow:hidden;
+  }
+  .float{position:absolute;font-size:2rem;animation:drift 7s ease-in-out infinite;user-select:none}
+  .float:nth-child(1){top:18%;left:12%;animation-delay:0s}
+  .float:nth-child(2){top:26%;right:14%;animation-delay:1.4s}
+  .float:nth-child(3){bottom:22%;left:18%;animation-delay:2.8s}
+  .float:nth-child(4){bottom:26%;right:12%;animation-delay:2s}
+  @keyframes drift{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-16px) rotate(8deg)}}
+  .hello{
+    display:inline-block;background:var(--sun);border:1.5px solid var(--ink);
+    padding:6px 18px;border-radius:999px;font-weight:700;font-size:.9rem;
+    transform:rotate(-2deg);box-shadow:3px 3px 0 var(--ink);margin-bottom:26px;
+  }
+  h1{
+    font-size:clamp(2.6rem,7vw,5rem);line-height:1.06;font-weight:800;letter-spacing:-.02em;
+    max-width:18ch;
+  }
+  h1 .squiggle{position:relative;white-space:nowrap}
+  h1 .squiggle::after{
+    content:"";position:absolute;left:0;right:0;bottom:.04em;height:.22em;z-index:-1;
+    background:var(--sun);border-radius:4px;transform:rotate(-1deg);
+  }
+  h1 .pop{color:var(--coral)}
+  .hero-sub{margin-top:22px;color:var(--muted);font-size:1.08rem;max-width:46ch}
+  .hero-cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .btn{
+    display:inline-block;padding:12px 26px;border-radius:999px;text-decoration:none;
+    font-weight:700;font-size:.95rem;border:1.5px solid var(--ink);color:var(--ink);
+    background:var(--bg);box-shadow:3px 3px 0 var(--ink);
+    transition:transform .15s,box-shadow .15s,background .2s;
+  }
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+  .btn:active{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--ink)}
+  .btn.fill{background:var(--coral);color:#fff}
+  .btn.fill:hover{background:var(--ink)}
+
+  /* ---------- sections ---------- */
+  section{padding:96px 6vw;max-width:1280px;margin:0 auto}
+  .kicker{
+    display:inline-block;border:1.5px solid var(--ink);border-radius:999px;
+    padding:4px 16px;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    transform:rotate(-1.5deg);box-shadow:3px 3px 0 var(--ink);margin-bottom:18px;
+  }
+  .kicker.k-coral{background:var(--coral);color:#fff}
+  .kicker.k-sky{background:var(--sky);color:#fff}
+  .kicker.k-leaf{background:var(--leaf);color:#fff}
+  .kicker.k-grape{background:var(--grape);color:#fff}
+  h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.01em;margin-bottom:12px}
+  .desc{color:var(--muted);max-width:60ch;margin-bottom:44px}
+
+  /* ---------- gallery ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+  .tile{
+    position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;
+    border:1.5px solid var(--ink);background:#fff;aspect-ratio:1/1;
+    transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .grid .tile:nth-child(4n+1):hover{transform:rotate(-1.2deg) translateY(-4px)}
+  .grid .tile:nth-child(4n+2):hover{transform:rotate(1.2deg) translateY(-4px)}
+  .grid .tile:nth-child(4n+3):hover{transform:rotate(-.8deg) translateY(-4px)}
+  .grid .tile:nth-child(4n):hover{transform:rotate(.9deg) translateY(-4px)}
+  .tile:hover{box-shadow:6px 6px 0 var(--ink)}
+  .tile.wide{grid-column:span 2;aspect-ratio:2/1}
+  @media(max-width:600px){.tile.wide{grid-column:span 1;aspect-ratio:1/1}}
+  .tile img{width:100%;height:100%;object-fit:cover;display:block}
+  .tile-label{
+    position:absolute;left:10px;bottom:10px;right:10px;
+    display:flex;justify-content:space-between;align-items:center;gap:8px;
+    opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s;pointer-events:none;
+  }
+  .tile:hover .tile-label{opacity:1;transform:none}
+  .tile-label b{
+    background:var(--bg);border:1.5px solid var(--ink);border-radius:999px;
+    padding:4px 14px;font-size:.8rem;box-shadow:2px 2px 0 var(--ink);
+  }
+  .tile .badge{
+    position:absolute;top:12px;right:12px;background:var(--sun);border:1.5px solid var(--ink);
+    font-size:.72rem;font-weight:700;padding:4px 12px;border-radius:999px;box-shadow:2px 2px 0 var(--ink);
+  }
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- playground (merged work + AI) ---------- */
+  #playground .note{
+    display:inline-block;background:#fff;border:1.5px dashed var(--ink);border-radius:14px;
+    padding:10px 18px;font-size:.9rem;color:var(--muted);margin-bottom:36px;transform:rotate(-.5deg);
+  }
+  #playground .note b{color:var(--ink)}
+  .tag-row{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 0}
+  .tag{
+    background:#fff;border:1.5px solid var(--ink);border-radius:999px;
+    padding:7px 16px;font-size:.83rem;font-weight:600;box-shadow:2px 2px 0 var(--ink);
+    transition:transform .15s,background .2s;
+  }
+  .tag:hover{transform:translateY(-2px) rotate(-1deg);background:var(--sun)}
+
+  /* ---------- about ---------- */
+  .about-wrap{
+    background:#fff;border:1.5px solid var(--ink);border-radius:28px;box-shadow:6px 6px 0 var(--ink);
+    padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:1.3fr .7fr;gap:44px;align-items:center;
+  }
+  @media(max-width:860px){.about-wrap{grid-template-columns:1fr}}
+  .about-wrap p{color:var(--muted);margin-bottom:14px}
+  .about-wrap p b{color:var(--ink)}
+  .fact-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .fact-list li{
+    border:1.5px solid var(--ink);border-radius:14px;padding:12px 18px;font-size:.92rem;
+    font-weight:600;box-shadow:3px 3px 0 var(--ink);background:var(--bg);
+    transition:transform .15s;
+  }
+  .fact-list li:hover{transform:translateX(4px) rotate(-.5deg)}
+  .fact-list li span{margin-right:10px}
+
+  /* ---------- contact ---------- */
+  #contact{text-align:center;padding-bottom:120px}
+  .mail{
+    display:inline-block;font-size:clamp(1.3rem,3.4vw,2.2rem);font-weight:800;color:var(--ink);
+    text-decoration:none;background:var(--sun);border:1.5px solid var(--ink);border-radius:999px;
+    padding:14px 34px;box-shadow:5px 5px 0 var(--ink);margin:22px 0 30px;
+    transition:transform .15s,box-shadow .15s;
+  }
+  .mail:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+
+  footer{
+    border-top:1.5px solid var(--line);padding:26px 6vw;display:flex;
+    justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:.82rem;
+  }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="#top">LR ✦</a>
+  <a href="#renders">Renders</a>
+  <a href="#playground">Playground</a>
+  <a href="#about">About</a>
+  <a href="#contact">Say hi</a>
+</nav>
+
+<header id="top">
+  <span class="float">🧊</span>
+  <span class="float">✨</span>
+  <span class="float">🎨</span>
+  <span class="float">🤖</span>
+  <div class="hello">👋 hi, I'm Lokesh</div>
+  <h1>I make <span class="squiggle">3D things</span> that look <span class="pop">real</span> — and some that don't.</h1>
+  <p class="hero-sub">
+    3D artist &amp; generalist from Dehradun, India. Product renders, characters,
+    lighting studies and AI experiments — mostly made in Blender, always made with fun.
+  </p>
+  <div class="hero-cta">
+    <a class="btn fill" href="#renders">See my renders</a>
+    <a class="btn" href="https://lokesh-rawat.artstation.com" target="_blank" rel="noopener">ArtStation ↗</a>
+  </div>
+</header>
+
+<!-- ================= RENDERS (ArtStation) ================= -->
+<section id="renders">
+  <div class="reveal">
+    <span class="kicker k-coral">Renders</span>
+    <h2>Things I made in Blender ✦</h2>
+    <p class="desc">
+      Personal render studies — bottles, gadgets, characters and little worlds.
+      Click any piece to open its full project page.
+    </p>
+  </div>
+  <div class="grid" id="rendersGrid"></div>
+</section>
+
+<!-- ================= PLAYGROUND (work on PC + AI, placeholders) ================= -->
+<section id="playground">
+  <div class="reveal">
+    <span class="kicker k-sky">Playground</span>
+    <h2>Work &amp; AI experiments 🧪</h2>
+    <p class="desc">
+      Everything else I make — product work from my machine and experiments with
+      generative AI, LoRA training and 3D scanning. Curating this collection now.
+    </p>
+    <div class="note">🚧 <b>Coming soon</b> — hand-picking the good stuff. These tiles are placeholders for now.</div>
+  </div>
+  <div class="grid" id="playgroundGrid"></div>
+  <div class="tag-row reveal">
+    <span class="tag">Blender</span>
+    <span class="tag">Product Viz</span>
+    <span class="tag">Lighting</span>
+    <span class="tag">Animation</span>
+    <span class="tag">ComfyUI</span>
+    <span class="tag">LoRA Training</span>
+    <span class="tag">Gaussian Splatting</span>
+    <span class="tag">Drone Capture</span>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="reveal">
+    <span class="kicker k-leaf">About</span>
+  </div>
+  <div class="about-wrap reveal">
+    <div>
+      <h2>Nice to meet you 🙂</h2>
+      <p>
+        I'm a <b>3D artist and generalist</b>. By day I make photoreal product renders
+        and animations for smart-home hardware; by night I render coffee cups, perfume
+        bottles and anime characters just because they're fun.
+      </p>
+      <p>
+        My home base is <b>Blender</b> — modeling, lighting, lookdev, animation — and
+        lately I've been mixing in <b>AI tools</b>: diffusion models, training my own LoRAs,
+        and turning drone footage into 3D scenes with Gaussian splatting.
+      </p>
+      <p>If it can be made to look real (or delightfully unreal), I'm in.</p>
+    </div>
+    <ul class="fact-list">
+      <li><span>📍</span>Dehradun, India</li>
+      <li><span>🧊</span>Blender generalist</li>
+      <li><span>💡</span>Lighting nerd</li>
+      <li><span>🤖</span>Runs a local AI lab</li>
+      <li><span>🎬</span>Renders in 4K</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <span class="kicker k-grape reveal">Say hi</span>
+  <h2 class="reveal">Got a project? Let's play.</h2>
+  <p class="desc reveal" style="margin:0 auto">Open to freelance renders, product visualization and collabs.</p>
+  <div class="reveal"><a class="mail" href="mailto:contactlokesh5050@gmail.com">contactlokesh5050@gmail.com ✉</a></div>
+  <div class="reveal"><a class="btn" href="https://lokesh-rawat.artstation.com" target="_blank" rel="noopener">ArtStation ↗</a></div>
+</section>
+
+<footer>
+  <span>© 2026 Lokesh Rawat — made with Blender &amp; snacks 🍪</span>
+  <span>all renders are my own work</span>
+</footer>
+
+<script>
+/* ---------------- data ---------------- */
+const RENDERS = [
+  {img:"assets/artstation/lGEZLk_0.jpg", title:"Luxury Perfume", link:"https://www.artstation.com/artwork/lGEZLk"},
+  {img:"assets/artstation/nJJV36_0.jpg", title:"JungleCat Beverage", link:"https://www.artstation.com/artwork/nJJV36"},
+  {img:"assets/artstation/Jreb50_1.jpg", title:"Vitamin C Serum", link:"https://www.artstation.com/artwork/Jreb50"},
+  {img:"assets/artstation/JrPLav_0.jpg", title:"Coffee or Beer?", link:"https://www.artstation.com/artwork/JrPLav"},
+  {img:"assets/artstation/a0DnAJ_0.jpg", title:"Interior No. 1", link:"https://www.artstation.com/artwork/a0DnAJ"},
+  {img:"assets/artstation/x3mG1X_0.jpg", title:"Anime Character", link:"https://www.artstation.com/artwork/x3mG1X"},
+  {img:"assets/artstation/K3E069_0.jpg", title:"Dr. Blender Serum", link:"https://www.artstation.com/artwork/K3E069"},
+  {img:"assets/artstation/P6EQL8_1.jpg", title:"Cetaphil", link:"https://www.artstation.com/artwork/P6EQL8"},
+  {img:"assets/artstation/XJgW8R_0.jpg", title:"Hydrocre+ Pills", link:"https://www.artstation.com/artwork/XJgW8R"},
+  {img:"assets/artstation/0ldGy8_0.jpg", title:"Blender Pills", link:"https://www.artstation.com/artwork/0ldGy8"},
+  {img:"assets/artstation/m8Av9a_0.jpg", title:"Mechanical Keyboard", link:"https://www.artstation.com/artwork/m8Av9a", wide:true},
+  {img:"assets/artstation/dKyQDX_0.jpg", title:"Mamaearth", link:"https://www.artstation.com/artwork/dKyQDX"},
+  {img:"assets/artstation/YBGJn6_0.jpg", title:"Headphones", link:"https://www.artstation.com/artwork/YBGJn6"},
+  {img:"assets/artstation/EvzN0N_0.jpg", title:"Pose Study", link:"https://www.artstation.com/artwork/EvzN0N"},
+  {img:"assets/artstation/4NRJbl_0.jpg", title:"Car Animation", link:"https://www.artstation.com/artwork/4NRJbl", video:true},
+  {img:"assets/artstation/NyqEvd_0.jpg", title:"Pixel-Art House", link:"https://www.artstation.com/artwork/NyqEvd", wide:true},
+];
+
+/*
+  PLAYGROUND — placeholders for now.
+  When your folder is ready, drop the images into assets/playground/
+  and replace the entries below, e.g.:
+  {img:"assets/playground/my-render.jpg", title:"My render"},
+*/
+const PLAYGROUND = [
+  {img:"assets/temp/placeholder-1.svg", title:"Coming soon", temp:true},
+  {img:"assets/temp/placeholder-2.svg", title:"Coming soon", temp:true},
+  {img:"assets/temp/placeholder-3.svg", title:"Coming soon", temp:true},
+  {img:"assets/temp/placeholder-4.svg", title:"Coming soon", temp:true},
+  {img:"assets/temp/placeholder-5.svg", title:"Coming soon", temp:true},
+  {img:"assets/temp/placeholder-6.svg", title:"Coming soon", temp:true},
+];
+
+/* ---------------- build grids ---------------- */
+function buildGrid(el, items, set){
+  el.innerHTML = items.map((it,i)=>`
+    <figure class="tile reveal ${it.wide?'wide':''}" data-idx="${i}" data-set="${set}">
+      <img src="${it.img}" alt="${it.title}" loading="lazy">
+      ${it.video?'<span class="badge">▶ video</span>':''}
+      ${it.temp?'<span class="badge">soon!</span>':''}
+      <figcaption class="tile-label"><b>${it.title}${it.temp?'':' ↗'}</b></figcaption>
+    </figure>`).join('');
+}
+const SETS = {renders:RENDERS, playground:PLAYGROUND};
+buildGrid(document.getElementById('rendersGrid'), RENDERS, 'renders');
+buildGrid(document.getElementById('playgroundGrid'), PLAYGROUND, 'playground');
+
+/* ---------------- open project pages ---------------- */
+document.addEventListener('click',e=>{
+  const tile = e.target.closest('.tile');
+  if(!tile) return;
+  const it = SETS[tile.dataset.set][+tile.dataset.idx];
+  if(it.temp) return;                                   // placeholders do nothing (yet!)
+  const hash = it.img.split('/').pop().split('_')[0];   // e.g. lGEZLk_0.jpg -> lGEZLk
+  window.open(`projects/${hash}.html`, '_blank');
+});
+
+/* ---------------- reveal on scroll ---------------- */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
