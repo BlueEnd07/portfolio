@@ -466,12 +466,12 @@ const RENDERS = [
   Not ready yet? Leave out poster/embed/src and use status:"wip"; it shows as "In progress".
 */
 const LAB = [
-  {type:"splat", big:true, icon:"🛰️", status:"wip", title:"Captured places — Gaussian splats",
-   desc:"Real places captured with a drone and turned into 3D Gaussian splats you can fly through in the browser. First scenes are on the way."},
+  {type:"nsfc", big:true, title:"Sensitive content",
+   desc:"This card has been blurred for your protection. Proceed with caution."},
   {type:"video", icon:"🎮", status:"wip", title:"Unreal Engine project",
    desc:"A real-time scene built in Unreal Engine. Coming soon."},
-  {type:"nsfc", title:"Sensitive content",
-   desc:"This card has been blurred for your protection. Proceed with caution."},
+  {type:"splat", icon:"🛰️", status:"wip", title:"Captured places — Gaussian splats",
+   desc:"Real places captured with a drone and turned into 3D Gaussian splats you can fly through in the browser. First scenes are on the way."},
 ];
 
 function labMedia(it, i){
@@ -483,7 +483,7 @@ function labMedia(it, i){
             <button class="play" data-lab="${i}">▶ Explore in 3D</button></div>`;
 }
 document.getElementById('labGrid').innerHTML = LAB.map((it,i)=> it.type==='nsfc' ? `
-  <button type="button" class="lab nsfc reveal" id="nsfcCard" aria-haspopup="dialog">
+  <button type="button" class="lab nsfc reveal ${it.big?'big':''}" id="nsfcCard" aria-haspopup="dialog">
     <div class="lab-media nsfc-bg">
       <div class="warn"><b>⚠ NSFC</b><span>Not Safe For Creatives</span></div></div>
     <div class="lab-body">
