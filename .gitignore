@@ -1,3 +1,8 @@
 Thumbs.db
 desktop.ini
 _shot.html
+
+# Blender working files (too big for GitHub)
+3dgs/
+*.blend
+*.blend1

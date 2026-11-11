@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lokesh Rawat — 3D Artist</title>
-<meta name="description" content="Portfolio of Lokesh Rawat — 3D artist and generalist. Renders, experiments and playful pixels.">
+<title>Lokesh Rawat — 3D Artist &amp; New-Tech Tinkerer</title>
+<meta name="description" content="Lokesh Rawat — 3D artist exploring new tech: product films, real-time Unreal, Gaussian splatting, digital twins, games and AI.">
 <style>
   :root{
     --bg:#faf7f1;
@@ -128,16 +128,70 @@
     font-size:.72rem;font-weight:700;padding:4px 12px;border-radius:999px;box-shadow:2px 2px 0 var(--ink);
   }
 
+  /* ---------- selected work (client case studies) ---------- */
+  .cases{display:flex;flex-direction:column;gap:34px}
+  .case{
+    display:grid;grid-template-columns:1.25fr 1fr;align-items:stretch;
+    background:#fff;border:1.5px solid var(--ink);border-radius:28px;overflow:hidden;
+    box-shadow:6px 6px 0 var(--ink);text-decoration:none;color:var(--ink);
+    transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .case:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--ink)}
+  .case:nth-child(even){grid-template-columns:1fr 1.25fr}
+  .case:nth-child(even) .case-media{order:2;border-right:0;border-left:1.5px solid var(--ink)}
+  .case-media{background:#0d0d0c;border-right:1.5px solid var(--ink);min-height:340px;position:relative;overflow:hidden}
+  .case-media img,.case-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .case:hover .case-media img{transform:scale(1.03)}
+  .case-media.split{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .case-media.split img,.case-media.split video{position:static;height:100%}
+  .case-body{padding:clamp(24px,3.5vw,44px);display:flex;flex-direction:column;justify-content:center}
+  .case-body .client{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);margin-bottom:8px}
+  .case-body h3{font-size:clamp(1.5rem,2.8vw,2.2rem);line-height:1.1;font-weight:800;letter-spacing:-.01em;margin-bottom:12px}
+  .case-body p{color:var(--muted);margin-bottom:20px;max-width:42ch}
+  .case-body .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+  .case-body .chips span{border:1.5px solid var(--ink);border-radius:999px;padding:3px 12px;font-size:.78rem;font-weight:600}
+  .case-body .go{font-weight:800}
+  .case:hover .go{color:var(--coral)}
+  @media(max-width:820px){
+    .case,.case:nth-child(even){grid-template-columns:1fr}
+    .case:nth-child(even) .case-media{order:0;border-left:0}
+    .case-media{border-right:0;border-bottom:1.5px solid var(--ink);min-height:0;aspect-ratio:4/3}
+  }
+  @media(prefers-reduced-motion:reduce){.case,.case-media img{transition:none}}
+
   /* reveal */
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
   .reveal.in{opacity:1;transform:none}
 
-  /* ---------- playground (merged work + AI) ---------- */
-  #playground .note{
-    display:inline-block;background:#fff;border:1.5px dashed var(--ink);border-radius:14px;
-    padding:10px 18px;font-size:.9rem;color:var(--muted);margin-bottom:36px;transform:rotate(-.5deg);
+  /* ---------- lab (new tech experiments) ---------- */
+  .lab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+  .lab{
+    background:#fff;border:1.5px solid var(--ink);border-radius:var(--radius);overflow:hidden;
+    box-shadow:5px 5px 0 var(--ink);display:flex;flex-direction:column;
   }
-  #playground .note b{color:var(--ink)}
+  .lab.big{grid-column:span 2}
+  @media(max-width:700px){.lab.big{grid-column:span 1}}
+  .lab-media{position:relative;aspect-ratio:16/10;background:#0d0d0c;border-bottom:1.5px solid var(--ink);overflow:hidden}
+  .lab-media img,.lab-media iframe,.lab-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+  .lab-media.empty{
+    display:flex;align-items:center;justify-content:center;font-size:3rem;
+    background:repeating-linear-gradient(45deg,#f3eee4 0 14px,#ebe4d6 14px 28px);
+  }
+  .lab-media .play{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    background:var(--sun);border:1.5px solid var(--ink);border-radius:999px;padding:10px 22px;
+    font:inherit;font-weight:800;cursor:pointer;box-shadow:3px 3px 0 var(--ink);white-space:nowrap;
+  }
+  .lab-media .play:hover{background:var(--coral);color:#fff}
+  .lab-body{padding:18px 20px 22px}
+  .lab-body .status{
+    display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    border:1.5px solid var(--ink);border-radius:999px;padding:2px 10px;margin-bottom:10px;background:var(--bg);
+  }
+  .status.live{background:var(--leaf);color:#fff}
+  .status.wip{background:var(--sun)}
+  .lab-body h3{font-size:1.15rem;font-weight:800;line-height:1.25;margin-bottom:6px}
+  .lab-body p{color:var(--muted);font-size:.92rem}
   .tag-row{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 0}
   .tag{
     background:#fff;border:1.5px solid var(--ink);border-radius:999px;
@@ -184,8 +238,9 @@
 
 <nav>
   <a class="brand" href="#top">LR ✦</a>
+  <a href="#work">Work</a>
+  <a href="#lab">Lab</a>
   <a href="#renders">Renders</a>
-  <a href="#playground">Playground</a>
   <a href="#about">About</a>
   <a href="#contact">Say hi</a>
 </nav>
@@ -194,54 +249,103 @@
   <span class="float">🧊</span>
   <span class="float">✨</span>
   <span class="float">🎨</span>
-  <span class="float">🤖</span>
+  <span class="float">🎮</span>
   <div class="hello">👋 hi, I'm Lokesh</div>
-  <h1>I make <span class="squiggle">3D things</span> that look <span class="pop">real</span> — and some that don't.</h1>
+  <h1>3D artist who can't leave <span class="squiggle">new tech</span> <span class="pop">alone.</span></h1>
   <p class="hero-sub">
-    3D artist &amp; generalist from Dehradun, India. Product renders, characters,
-    lighting studies and AI experiments — mostly made in Blender, always made with fun.
+    I make product films and photoreal renders, and I'm hooked on what's next:
+    real-time engines, Gaussian splatting, digital twins, games and AI.
+    If it's new, I'm probably already trying it.
   </p>
   <div class="hero-cta">
-    <a class="btn fill" href="#renders">See my renders</a>
-    <a class="btn" href="#playground">Playground</a>
+    <a class="btn fill" href="#work">See client work</a>
+    <a class="btn" href="#lab">What I'm exploring</a>
   </div>
 </header>
 
-<!-- ================= RENDERS (ArtStation) ================= -->
+<!-- ================= SELECTED WORK (client case studies) ================= -->
+<section id="work">
+  <div class="reveal">
+    <span class="kicker k-sky">Selected work</span>
+    <h2>Client projects 💼</h2>
+    <p class="desc">
+      Product films and catalogue renders for smart-home and lighting brands.
+      Each project opens a full case study.
+    </p>
+  </div>
+  <div class="cases">
+    <a class="case reveal" href="projects/keus-consoles.html">
+      <div class="case-media split">
+        <video src="assets/work/console-film/endgame.mp4" poster="assets/work/console-film/endgame-poster.jpg"
+               autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+        <img src="assets/work/console-film/kitchen-on.jpg" alt="" loading="lazy">
+        <img src="assets/work/console-film/dining.jpg" alt="" loading="lazy">
+      </div>
+      <div class="case-body">
+        <span class="client">Keus · Smart-home consoles</span>
+        <h3>One tap, and the evening switches on</h3>
+        <p>A vertical CG film where one button press lights up a whole kitchen, plus renders of the console finishes.</p>
+        <div class="chips"><span>Animation</span><span>Interior lighting</span><span>Product</span></div>
+        <span class="go">View case study →</span>
+      </div>
+    </a>
+    <a class="case reveal" href="projects/ardeo-lighting.html">
+      <div class="case-media"><img src="assets/work/ardeo/track-adhil.jpg" alt="" loading="lazy"></div>
+      <div class="case-body">
+        <span class="client">Ardeo · Architectural lighting</span>
+        <h3>A whole lighting catalogue, one look</h3>
+        <p>350+ renders of track lights, spots, profiles and LED strips, all lit to look like one family.</p>
+        <div class="chips"><span>Lookdev</span><span>Catalogue</span><span>Studio lighting</span></div>
+        <span class="go">View case study →</span>
+      </div>
+    </a>
+    <a class="case reveal" href="projects/human-touch.html">
+      <div class="case-media"><img src="assets/work/human-touch/click.jpg" alt="" loading="lazy"></div>
+      <div class="case-body">
+        <span class="client">Keus · App marketing</span>
+        <h3>Hands that feel real</h3>
+        <p>CG hands holding and tapping the Keus app. Any screen or angle can be re-rendered, no photo shoot needed.</p>
+        <div class="chips"><span>CG humans</span><span>Skin shading</span><span>4K</span></div>
+        <span class="go">View case study →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ================= LAB (new tech: splats, Unreal, AI) ================= -->
+<section id="lab">
+  <div class="reveal">
+    <span class="kicker k-leaf">Lab</span>
+    <h2>What I'm exploring right now 🧪</h2>
+    <p class="desc">
+      Real-time engines, captured reality and AI tools. Some of these are finished,
+      some are still in progress. Splats load in 3D, so drag to look around.
+    </p>
+  </div>
+  <div class="lab-grid" id="labGrid"></div>
+  <div class="tag-row reveal">
+    <span class="tag">Gaussian Splatting</span>
+    <span class="tag">Digital Twins</span>
+    <span class="tag">Unreal Engine</span>
+    <span class="tag">Real-time</span>
+    <span class="tag">Drone Capture</span>
+    <span class="tag">ComfyUI</span>
+    <span class="tag">LoRA Training</span>
+    <span class="tag">Games</span>
+  </div>
+</section>
+
+<!-- ================= RENDERS (personal) ================= -->
 <section id="renders">
   <div class="reveal">
-    <span class="kicker k-coral">Renders</span>
-    <h2>Things I made in Blender ✦</h2>
+    <span class="kicker k-coral">Personal renders</span>
+    <h2>Things I made for fun ✦</h2>
     <p class="desc">
       Personal render studies — bottles, gadgets, characters and little worlds.
       Click any piece to open its full project page.
     </p>
   </div>
   <div class="grid" id="rendersGrid"></div>
-</section>
-
-<!-- ================= PLAYGROUND (work on PC + AI, placeholders) ================= -->
-<section id="playground">
-  <div class="reveal">
-    <span class="kicker k-sky">Playground</span>
-    <h2>Work &amp; AI experiments 🧪</h2>
-    <p class="desc">
-      Everything else I make — product work from my machine and experiments with
-      generative AI, LoRA training and 3D scanning. Curating this collection now.
-    </p>
-    <div class="note">🚧 <b>Coming soon</b> — hand-picking the good stuff. These tiles are placeholders for now.</div>
-  </div>
-  <div class="grid" id="playgroundGrid"></div>
-  <div class="tag-row reveal">
-    <span class="tag">Blender</span>
-    <span class="tag">Product Viz</span>
-    <span class="tag">Lighting</span>
-    <span class="tag">Animation</span>
-    <span class="tag">ComfyUI</span>
-    <span class="tag">LoRA Training</span>
-    <span class="tag">Gaussian Splatting</span>
-    <span class="tag">Drone Capture</span>
-  </div>
 </section>
 
 <!-- ================= ABOUT ================= -->
@@ -253,23 +357,24 @@
     <div>
       <h2>Nice to meet you 🙂</h2>
       <p>
-        I'm a <b>3D artist and generalist</b>. By day I make photoreal product renders
-        and animations for smart-home hardware; by night I render coffee cups, perfume
-        bottles and anime characters just because they're fun.
+        I'm a <b>3D artist</b> who's curious about everything. At work I make product
+        films and photoreal renders for smart-home and lighting brands. Outside work I
+        try whatever new thing has caught my attention.
       </p>
       <p>
-        My home base is <b>Blender</b> — modeling, lighting, lookdev, animation — and
-        lately I've been mixing in <b>AI tools</b>: diffusion models, training my own LoRAs,
-        and turning drone footage into 3D scenes with Gaussian splatting.
+        Right now that's <b>Gaussian splatting</b> and <b>digital twins</b> (capturing
+        real places and turning them into explorable 3D), <b>Unreal Engine</b> and
+        real-time work, <b>games</b>, and <b>AI tools</b>: ComfyUI pipelines and training
+        my own LoRAs.
       </p>
-      <p>If it can be made to look real (or delightfully unreal), I'm in.</p>
+      <p>My base is Blender, but I'll learn whatever tool the idea needs.</p>
     </div>
     <ul class="fact-list">
       <li><span>📍</span>Dehradun, India</li>
-      <li><span>🧊</span>Blender generalist</li>
-      <li><span>💡</span>Lighting nerd</li>
+      <li><span>🧊</span>Blender + Unreal</li>
+      <li><span>🛰️</span>Splats &amp; digital twins</li>
+      <li><span>🎮</span>Into games &amp; real-time</li>
       <li><span>🤖</span>Runs a local AI lab</li>
-      <li><span>🎬</span>Renders in 4K</li>
     </ul>
   </div>
 </section>
@@ -278,7 +383,7 @@
 <section id="contact">
   <span class="kicker k-grape reveal">Say hi</span>
   <h2 class="reveal">Got a project? Let's play.</h2>
-  <p class="desc reveal" style="margin:0 auto">Open to freelance renders, product visualization and collabs.</p>
+  <p class="desc reveal" style="margin:0 auto">Open to product films, real-time and digital-twin projects, game art and collabs on anything new.</p>
   <div class="reveal"><a class="mail" href="mailto:contactlokesh5050@gmail.com">contactlokesh5050@gmail.com ✉</a></div>
 </section>
 
@@ -290,38 +395,75 @@
 <script>
 /* ---------------- data ---------------- */
 const RENDERS = [
-  {img:"assets/artstation/lGEZLk_0.jpg", title:"Luxury Perfume", link:"https://www.artstation.com/artwork/lGEZLk"},
-  {img:"assets/artstation/nJJV36_0.jpg", title:"JungleCat Beverage", link:"https://www.artstation.com/artwork/nJJV36"},
-  {img:"assets/artstation/Jreb50_1.jpg", title:"Vitamin C Serum", link:"https://www.artstation.com/artwork/Jreb50"},
-  {img:"assets/artstation/JrPLav_0.jpg", title:"Coffee or Beer?", link:"https://www.artstation.com/artwork/JrPLav"},
-  {img:"assets/artstation/a0DnAJ_0.jpg", title:"Interior No. 1", link:"https://www.artstation.com/artwork/a0DnAJ"},
-  {img:"assets/artstation/x3mG1X_0.jpg", title:"Anime Character", link:"https://www.artstation.com/artwork/x3mG1X"},
-  {img:"assets/artstation/K3E069_0.jpg", title:"Dr. Blender Serum", link:"https://www.artstation.com/artwork/K3E069"},
-  {img:"assets/artstation/P6EQL8_1.jpg", title:"Cetaphil", link:"https://www.artstation.com/artwork/P6EQL8"},
-  {img:"assets/artstation/XJgW8R_0.jpg", title:"Hydrocre+ Pills", link:"https://www.artstation.com/artwork/XJgW8R"},
-  {img:"assets/artstation/0ldGy8_0.jpg", title:"Blender Pills", link:"https://www.artstation.com/artwork/0ldGy8"},
-  {img:"assets/artstation/m8Av9a_0.jpg", title:"Mechanical Keyboard", link:"https://www.artstation.com/artwork/m8Av9a", wide:true},
-  {img:"assets/artstation/dKyQDX_0.jpg", title:"Mamaearth", link:"https://www.artstation.com/artwork/dKyQDX"},
-  {img:"assets/artstation/YBGJn6_0.jpg", title:"Headphones", link:"https://www.artstation.com/artwork/YBGJn6"},
-  {img:"assets/artstation/EvzN0N_0.jpg", title:"Pose Study", link:"https://www.artstation.com/artwork/EvzN0N"},
-  {img:"assets/artstation/4NRJbl_0.jpg", title:"Car Animation", link:"https://www.artstation.com/artwork/4NRJbl", video:true},
-  {img:"assets/artstation/NyqEvd_0.jpg", title:"Pixel-Art House", link:"https://www.artstation.com/artwork/NyqEvd", wide:true},
+  {img:"assets/artstation/lGEZLk_0.jpg", title:"Luxury Perfume"},
+  {img:"assets/artstation/nJJV36_0.jpg", title:"JungleCat Beverage"},
+  {img:"assets/artstation/Jreb50_1.jpg", title:"Vitamin C Serum"},
+  {img:"assets/artstation/JrPLav_0.jpg", title:"Coffee or Beer?"},
+  {img:"assets/artstation/a0DnAJ_0.jpg", title:"Interior No. 1"},
+  {img:"assets/artstation/x3mG1X_0.jpg", title:"Anime Character"},
+  {img:"assets/artstation/K3E069_0.jpg", title:"Dr. Blender Serum"},
+  {img:"assets/artstation/P6EQL8_1.jpg", title:"Cetaphil"},
+  {img:"assets/artstation/XJgW8R_0.jpg", title:"Hydrocre+ Pills"},
+  {img:"assets/artstation/0ldGy8_0.jpg", title:"Blender Pills"},
+  {img:"assets/artstation/m8Av9a_0.jpg", title:"Mechanical Keyboard", wide:true},
+  {img:"assets/artstation/dKyQDX_0.jpg", title:"Mamaearth"},
+  {img:"assets/artstation/YBGJn6_0.jpg", title:"Headphones"},
+  {img:"assets/artstation/EvzN0N_0.jpg", title:"Pose Study"},
+  {img:"assets/artstation/4NRJbl_0.jpg", title:"Car Animation", video:true},
+  {img:"assets/artstation/NyqEvd_0.jpg", title:"Pixel-Art House", wide:true},
 ];
 
 /*
-  PLAYGROUND — placeholders for now.
-  When your folder is ready, drop the images into assets/playground/
-  and replace the entries below, e.g.:
-  {img:"assets/playground/my-render.jpg", title:"My render"},
+  LAB — new-tech experiments. To add something, add one line to this list.
+  Gaussian splat (SuperSplat): publish from the SuperSplat editor. Your scene page is
+    https://superspl.at/scene/XXXX; the embed link is https://superspl.at/s?id=XXXX.
+    Save a screenshot as the poster:
+    {type:"splat", title:"…", desc:"…", poster:"assets/lab/my-splat.jpg", embed:"https://superspl.at/s?id=XXXX", status:"live"},
+  Video file (Unreal etc.):
+    {type:"video", title:"…", desc:"…", src:"assets/lab/clip.mp4", poster:"assets/lab/clip.jpg", status:"live"},
+  YouTube video: same as a splat, with embed:"https://www.youtube-nocookie.com/embed/VIDEO_ID?autoplay=1"
+  Image: {type:"image", title:"…", desc:"…", img:"assets/…jpg", status:"live"},
+  Not ready yet? Leave out poster/embed/src and use status:"wip"; it shows as "In progress".
 */
-const PLAYGROUND = [
-  {img:"assets/temp/placeholder-1.svg", title:"Coming soon", temp:true},
-  {img:"assets/temp/placeholder-2.svg", title:"Coming soon", temp:true},
-  {img:"assets/temp/placeholder-3.svg", title:"Coming soon", temp:true},
-  {img:"assets/temp/placeholder-4.svg", title:"Coming soon", temp:true},
-  {img:"assets/temp/placeholder-5.svg", title:"Coming soon", temp:true},
-  {img:"assets/temp/placeholder-6.svg", title:"Coming soon", temp:true},
+const LAB = [
+  {type:"splat", big:true, icon:"🛰️", status:"wip", title:"Captured places — Gaussian splats",
+   desc:"Real places captured with a drone and turned into 3D Gaussian splats you can fly through in the browser. First scenes are on the way."},
+  {type:"video", icon:"🎮", status:"wip", title:"Unreal Engine project",
+   desc:"A real-time scene built in Unreal Engine. Coming soon."},
+  {type:"image", status:"live", title:"AI interiors — one prompt, many moods", img:"assets/ai/ai-ideogram-29.jpg",
+   desc:"Exploring how far generative tools can push interior mood boards."},
+  {type:"image", status:"live", title:"img2img world-building", img:"assets/ai/ai-img2img-2k.jpg",
+   desc:"Turning rough frames into a consistent story world with image-to-image."},
+  {type:"image", status:"live", title:"AI UI concept — Krea", img:"assets/ai/ai-krea2-turbo.jpg",
+   desc:"Testing generative models on product UI and device mock-ups."},
 ];
+
+function labMedia(it, i){
+  const ready = it.poster || it.img || it.src || it.embed;
+  if(!ready) return `<div class="lab-media empty" aria-hidden="true">${it.icon||'✨'}</div>`;
+  if(it.type==='image') return `<div class="lab-media"><img src="${it.img}" alt="${it.title}" loading="lazy"></div>`;
+  if(it.type==='video' && it.src) return `<div class="lab-media"><video src="${it.src}" poster="${it.poster||''}" muted loop playsinline controls preload="none"></video></div>`;
+  return `<div class="lab-media">${it.poster?`<img src="${it.poster}" alt="${it.title}" loading="lazy">`:''}
+            <button class="play" data-lab="${i}">▶ Explore in 3D</button></div>`;
+}
+document.getElementById('labGrid').innerHTML = LAB.map((it,i)=>`
+  <article class="lab reveal ${it.big?'big':''}">
+    ${labMedia(it,i)}
+    <div class="lab-body">
+      <span class="status ${it.status==='live'?'live':'wip'}">${it.status==='live'?'Live':'In progress'}</span>
+      <h3>${it.title}</h3>
+      <p>${it.desc}</p>
+    </div>
+  </article>`).join('');
+/* splats are heavy: only load the 3D viewer when someone clicks */
+document.getElementById('labGrid').addEventListener('click',e=>{
+  const b = e.target.closest('.play'); if(!b) return;
+  const it = LAB[+b.dataset.lab];
+  const f = document.createElement('iframe');
+  f.src = it.embed; f.title = it.title; f.allow = 'fullscreen; xr-spatial-tracking; autoplay';
+  f.setAttribute('allowfullscreen','');
+  b.parentElement.replaceChildren(f);
+});
 
 /* ---------------- build grids ---------------- */
 function buildGrid(el, items, set){
@@ -333,9 +475,8 @@ function buildGrid(el, items, set){
       <figcaption class="tile-label"><b>${it.title}${it.temp?'':' ↗'}</b></figcaption>
     </figure>`).join('');
 }
-const SETS = {renders:RENDERS, playground:PLAYGROUND};
+const SETS = {renders:RENDERS};
 buildGrid(document.getElementById('rendersGrid'), RENDERS, 'renders');
-buildGrid(document.getElementById('playgroundGrid'), PLAYGROUND, 'playground');
 
 /* ---------------- open project pages ---------------- */
 document.addEventListener('click',e=>{
