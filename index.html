@@ -195,7 +195,11 @@
 
   /* ---------- NSFC card + "are you sure?" dialog ---------- */
   .nsfc{cursor:pointer;text-align:left;font:inherit;color:inherit;padding:0}
-  .nsfc .lab-media img{filter:blur(22px) saturate(1.3);transform:scale(1.15)}
+  .nsfc-bg{background:
+    radial-gradient(circle at 25% 35%,#c98a4b 0 18%,transparent 40%),
+    radial-gradient(circle at 70% 60%,#5a3a6e 0 20%,transparent 45%),
+    radial-gradient(circle at 55% 20%,#e0b070 0 12%,transparent 35%),#2a2420}
+  .nsfc-bg::before{content:"";position:absolute;inset:0;backdrop-filter:blur(18px)}
   .nsfc .warn{
     position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
     color:#fff;text-align:center;background:rgba(13,13,12,.35);
@@ -466,7 +470,7 @@ const LAB = [
    desc:"Real places captured with a drone and turned into 3D Gaussian splats you can fly through in the browser. First scenes are on the way."},
   {type:"video", icon:"🎮", status:"wip", title:"Unreal Engine project",
    desc:"A real-time scene built in Unreal Engine. Coming soon."},
-  {type:"nsfc", img:"assets/ai/ai-ideogram-29.jpg", title:"Sensitive content",
+  {type:"nsfc", title:"Sensitive content",
    desc:"This card has been blurred for your protection. Proceed with caution."},
 ];
 
@@ -480,7 +484,7 @@ function labMedia(it, i){
 }
 document.getElementById('labGrid').innerHTML = LAB.map((it,i)=> it.type==='nsfc' ? `
   <button type="button" class="lab nsfc reveal" id="nsfcCard" aria-haspopup="dialog">
-    <div class="lab-media"><img src="${it.img}" alt="" loading="lazy">
+    <div class="lab-media nsfc-bg">
       <div class="warn"><b>⚠ NSFC</b><span>Not Safe For Creatives</span></div></div>
     <div class="lab-body">
       <span class="status">Click if you dare</span>

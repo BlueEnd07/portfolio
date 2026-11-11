@@ -17,6 +17,14 @@
   .disclaimer p{color:var(--muted);margin:0}
   .wide{aspect-ratio:16/10}
   .sq{aspect-ratio:1/1}
+  .soon{
+    border:1.5px solid var(--ink);border-radius:var(--radius);box-shadow:6px 6px 0 var(--ink);
+    padding:64px 24px;text-align:center;
+    background:repeating-linear-gradient(45deg,#f3eee4 0 14px,#ebe4d6 14px 28px);
+  }
+  .soon .big{font-size:3rem;line-height:1;margin-bottom:14px}
+  .soon h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;margin-bottom:6px}
+  .soon p{color:var(--muted)}
   .stamp{
     position:absolute;top:14px;right:14px;background:var(--sun);border:1.5px solid var(--ink);
     border-radius:999px;padding:3px 12px;font-size:.72rem;font-weight:800;letter-spacing:.06em;
@@ -48,11 +56,10 @@
     the only place where the robot helped. No artists were replaced in the making of these images.</p>
   </div>
 
-  <div class="frame wide zoom"><img src="../assets/ai/ai-ideogram-29.jpg" alt="Grid of AI-generated living room interiors in different moods" loading="lazy"><span class="stamp">100% AI</span><span class="cap">Interior moods</span></div>
-
-  <div class="row two" style="margin-top:22px">
-    <div class="frame wide zoom"><img src="../assets/ai/ai-img2img-2k.jpg" alt="Grid of AI-generated dark fantasy village scenes with a masked figure" loading="lazy"><span class="stamp">100% AI</span><span class="cap">img2img world-building</span></div>
-    <div class="frame wide zoom"><img src="../assets/ai/ai-krea2-turbo.jpg" alt="AI-generated smart-home app interface on a tablet" loading="lazy"><span class="stamp">100% AI</span><span class="cap">UI concept</span></div>
+  <div class="soon">
+    <div class="big" aria-hidden="true">🤖🍳</div>
+    <h2>The robot is still cooking.</h2>
+    <p>New AI experiments are on the way. Check back soon, if you dare.</p>
   </div>
 
   <section class="note">
@@ -66,6 +73,5 @@
   </div>
 </main>
 <footer>© 2026 Lokesh Rawat — this page was made with AI &amp; a guilty conscience 🤖</footer>
-<script src="../assets/lightbox.js"></script>
 </body>
 </html>
