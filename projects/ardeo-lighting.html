@@ -10,6 +10,9 @@
   .sq{aspect-ratio:1/1}
   .wide{aspect-ratio:16/10}
   .cine{aspect-ratio:16/9}
+  .p45{aspect-ratio:4/5}
+  .row.four{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:760px){.row.four{grid-template-columns:1fr 1fr}}
   .kicker{background:var(--coral)}
 </style>
 </head>
@@ -75,6 +78,18 @@
   <div class="frame wide zoom"><img src="../assets/work/ardeo/aurora-strip.jpg" alt="Close-up of a bendable LED strip" loading="lazy"></div>
 
   <section class="note">
+    <h2><span>Motion</span>Track lights in motion</h2>
+    <p>Short 4:5 loops for social: slow camera moves along the magnetic track, so the beams and textures catch the light.</p>
+  </section>
+
+  <div class="row four">
+    <div class="frame p45"><video class="loop" data-src="../assets/work/motion/ardeo-track-1.mp4" poster="../assets/work/motion/ardeo-track-1.jpg" muted loop playsinline preload="none" aria-label="Track spotlight and linear module on a dark ceiling"></video></div>
+    <div class="frame p45"><video class="loop" data-src="../assets/work/motion/ardeo-track-2.mp4" poster="../assets/work/motion/ardeo-track-2.jpg" muted loop playsinline preload="none" aria-label="Linear track modules sliding past the camera"></video></div>
+    <div class="frame p45"><video class="loop" data-src="../assets/work/motion/ardeo-track-3.mp4" poster="../assets/work/motion/ardeo-track-3.jpg" muted loop playsinline preload="none" aria-label="Nimbus disc lights on a magnetic track"></video></div>
+    <div class="frame p45"><video class="loop" data-src="../assets/work/motion/ardeo-track-4.mp4" poster="../assets/work/motion/ardeo-track-4.jpg" muted loop playsinline preload="none" aria-label="Grid spot modules in black and white"></video></div>
+  </div>
+
+  <section class="note">
     <h2><span>In use</span>Installation shot</h2>
     <p>A frame from an installation sequence, showing a downlight being fitted into a ceiling.</p>
   </section>
@@ -94,5 +109,6 @@
 </main>
 <footer>© 2026 Lokesh Rawat — made with Blender &amp; snacks 🍪</footer>
 <script src="../assets/lightbox.js"></script>
+<script src="../assets/motion.js"></script>
 </body>
 </html>
