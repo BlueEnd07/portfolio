@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="../assets/case.css">
 <style>
   .tall{aspect-ratio:9/16}
+  .cine{aspect-ratio:16/9}
   .p43{aspect-ratio:4/3}
   .kicker{background:var(--sky)}
   .splat{aspect-ratio:16/9;background:#0d0d0c}
@@ -35,7 +36,7 @@
   <p class="lede">
     One late ride down the covered cycle track, a camera held up in one hand, and a
     question: can a night-time video become a place you can fly through? This is how
-    the footage became a splat, and where it goes next: Unreal Engine.
+    the footage became a splat, and how it ended up in Unreal Engine.
   </p>
 
   <div class="frame splat" id="splat">
@@ -92,11 +93,33 @@
 
   <div class="row two">
     <div class="frame tall"><video class="loop" data-src="../assets/lab/night-ride/flythrough.mp4" poster="../assets/lab/night-ride/flythrough.jpg" muted loop playsinline preload="none" aria-label="Flying through the trained Gaussian splat of the cycle track"></video><span class="cap">First fly-through</span></div>
-    <div class="frame tall" style="display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,#f3eee4 0 14px,#ebe4d6 14px 28px);text-align:center;padding:24px">
-      <div><div style="font-size:3rem;line-height:1;margin-bottom:12px" aria-hidden="true">🎮</div>
-      <b style="font-size:1.2rem">Next stop: Unreal Engine</b>
-      <p style="color:var(--muted);margin-top:6px">The splat goes into Unreal for camera moves, fog and a proper cinematic. Coming soon.</p></div>
-    </div>
+    <div class="frame tall"><video class="loop" data-src="../assets/lab/night-ride/capture.mp4" poster="../assets/lab/night-ride/capture.jpg" muted loop playsinline preload="none" aria-label="The capture ride, for comparison"></video><span class="cap">The real ride, for comparison</span></div>
+  </div>
+
+  <section class="note">
+    <h2><span>04 · Unreal Engine</span>Bringing the splat into Unreal</h2>
+    <p>
+      The trained splat is now in Unreal Engine as its own level, with a Cine Camera
+      and a Sequencer shot. The first test is a reveal: the track builds itself out of
+      glowing points before the camera rides down it. The full cinematic is in progress.
+    </p>
+  </section>
+
+  <div class="frame cine"><video class="loop" data-src="../assets/lab/night-ride/unreal-reveal.mp4" poster="../assets/lab/night-ride/unreal-reveal.jpg" muted loop playsinline preload="none" aria-label="The cycle track splat inside Unreal Engine, assembling from glowing points on the Sequencer timeline"></video><span class="cap">Splat reveal in Unreal Sequencer (WIP)</span></div>
+
+  <section class="note">
+    <h2><span>05 · Next capture</span>Same pipeline, indoors: my desk</h2>
+    <p>
+      The next splat is a lot closer to home: my desk at work, captured with a slow
+      orbit. Indoors with steady light, the cameras ring the scene from every
+      side, and the result goes straight into Blender as a splat I can light and render
+      around, a small step towards digital twins of real rooms.
+    </p>
+  </section>
+
+  <div class="row two">
+    <div class="frame cine"><video class="loop" data-src="../assets/lab/night-ride/desk-training.mp4" poster="../assets/lab/night-ride/desk-training.jpg" muted loop playsinline preload="none" aria-label="Desk splat training, with solved cameras circling the desk"></video><span class="cap">Desk: cameras &amp; training</span></div>
+    <div class="frame cine"><video class="loop" data-src="../assets/lab/night-ride/desk-blender.mp4" poster="../assets/lab/night-ride/desk-blender.jpg" muted loop playsinline preload="none" aria-label="The desk splat loaded in Blender's viewport, orbiting around a bottle on the desk"></video><span class="cap">Desk splat in Blender</span></div>
   </div>
 
   <section class="note">
