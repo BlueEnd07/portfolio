@@ -471,12 +471,10 @@ const RENDERS = [
 const LAB = [
   {type:"nsfc", big:true, title:"Sensitive content",
    desc:"This card has been blurred for your protection. Proceed with caution."},
-  {type:"video", status:"wip", title:"Night Ride in Unreal Engine",
-   src:"assets/lab/night-ride/unreal-reveal.mp4", poster:"assets/lab/night-ride/unreal-reveal.jpg", link:"projects/night-ride-splat.html",
-   desc:"The cycle-track splat brought into Unreal: a Sequencer reveal where the track builds itself from glowing points. Full cinematic in progress."},
-  {type:"splat", status:"live", title:"Night Ride — Gaussian splat",
-   poster:"assets/lab/night-ride/card.jpg", embed:"https://superspl.at/s?id=92c1386f", link:"projects/night-ride-splat.html",
-   desc:"A night ride down a Hyderabad cycle track, filmed on a bike and turned into a 3D Gaussian splat. Click to fly through it."},
+  {type:"splat", status:"live", title:"Night Ride — splat to Unreal",
+   poster:"assets/lab/night-ride/unreal-reveal.jpg", loop:"assets/lab/night-ride/unreal-reveal.mp4",
+   embed:"https://superspl.at/s?id=92c1386f", link:"projects/night-ride-splat.html",
+   desc:"A night ride down a Hyderabad cycle track, filmed on a bike, turned into a 3D Gaussian splat and brought into Unreal Engine for a cinematic. Fly through the splat right here."},
 ];
 
 function labMedia(it, i){
@@ -485,7 +483,8 @@ function labMedia(it, i){
   if(it.type==='image') return `<div class="lab-media"><img src="${it.img}" alt="${it.title}" loading="lazy"></div>`;
   if(it.type==='video' && it.src) return `<div class="lab-media"><video src="${it.src}" poster="${it.poster||''}" muted loop playsinline controls preload="none"></video></div>`;
   if(!it.embed && it.link) return `<a class="lab-media" href="${it.link}"><img src="${it.poster}" alt="${it.title}" loading="lazy"></a>`;
-  return `<div class="lab-media">${it.poster?`<img src="${it.poster}" alt="${it.title}" loading="lazy">`:''}
+  return `<div class="lab-media">${it.loop?`<video class="loop" data-src="${it.loop}" poster="${it.poster}" muted loop playsinline preload="none" aria-label="${it.title}"></video>`
+            : it.poster?`<img src="${it.poster}" alt="${it.title}" loading="lazy">`:''}
             <button class="play" data-lab="${i}">▶ Explore in 3D</button></div>`;
 }
 document.getElementById('labGrid').innerHTML = LAB.map((it,i)=> it.type==='nsfc' ? `
