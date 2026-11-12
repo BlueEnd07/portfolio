@@ -184,6 +184,9 @@
   }
   .lab-media .play:hover{background:var(--coral);color:#fff}
   .lab-body{padding:18px 20px 22px}
+  .lab-link{display:inline-block;margin-top:12px;font-weight:700;color:var(--ink);border-bottom:2px solid var(--coral)}
+  .lab-link:hover{color:var(--coral)}
+  a.lab-media{display:block}
   .lab-body .status{
     display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
     border:1.5px solid var(--ink);border-radius:999px;padding:2px 10px;margin-bottom:10px;background:var(--bg);
@@ -470,8 +473,9 @@ const LAB = [
    desc:"This card has been blurred for your protection. Proceed with caution."},
   {type:"video", icon:"🎮", status:"wip", title:"Unreal Engine project",
    desc:"A real-time scene built in Unreal Engine. Coming soon."},
-  {type:"splat", icon:"🛰️", status:"wip", title:"Captured places — Gaussian splats",
-   desc:"Real places captured with a drone and turned into 3D Gaussian splats you can fly through in the browser. First scenes are on the way."},
+  {type:"splat", status:"wip", title:"Night Ride — Gaussian splat",
+   poster:"assets/lab/night-ride/card.jpg", link:"projects/night-ride-splat.html",
+   desc:"A night ride down a Hyderabad cycle track, filmed on a bike and turned into a 3D Gaussian splat. See how it was made."},
 ];
 
 function labMedia(it, i){
@@ -479,6 +483,7 @@ function labMedia(it, i){
   if(!ready) return `<div class="lab-media empty" aria-hidden="true">${it.icon||'✨'}</div>`;
   if(it.type==='image') return `<div class="lab-media"><img src="${it.img}" alt="${it.title}" loading="lazy"></div>`;
   if(it.type==='video' && it.src) return `<div class="lab-media"><video src="${it.src}" poster="${it.poster||''}" muted loop playsinline controls preload="none"></video></div>`;
+  if(!it.embed && it.link) return `<a class="lab-media" href="${it.link}"><img src="${it.poster}" alt="${it.title}" loading="lazy"></a>`;
   return `<div class="lab-media">${it.poster?`<img src="${it.poster}" alt="${it.title}" loading="lazy">`:''}
             <button class="play" data-lab="${i}">▶ Explore in 3D</button></div>`;
 }
@@ -498,6 +503,7 @@ document.getElementById('labGrid').innerHTML = LAB.map((it,i)=> it.type==='nsfc'
       <span class="status ${it.status==='live'?'live':'wip'}">${it.status==='live'?'Live':'In progress'}</span>
       <h3>${it.title}</h3>
       <p>${it.desc}</p>
+      ${it.link?`<a class="lab-link" href="${it.link}">Behind the scenes →</a>`:''}
     </div>
   </article>`).join('');
 /* splats are heavy: only load the 3D viewer when someone clicks */

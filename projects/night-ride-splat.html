@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Night Ride — Gaussian Splat — Lokesh Rawat</title>
+<meta name="description" content="Behind the scenes: capturing a night cycle track in Hyderabad on a bike and turning it into a 3D Gaussian splat, by Lokesh Rawat.">
+<link rel="stylesheet" href="../assets/case.css">
+<style>
+  .tall{aspect-ratio:9/16}
+  .p43{aspect-ratio:4/3}
+  .kicker{background:var(--sky)}
+</style>
+</head>
+<body>
+<nav>
+  <a class="brand" href="../index.html">LR ✦</a>
+  <a href="../index.html#lab">← Lab</a>
+  <a href="../index.html#contact">Say hi</a>
+</nav>
+
+<main>
+  <span class="kicker">Lab · Personal · Behind the scenes</span>
+  <h1>Night Ride</h1>
+  <p class="sub">A Hyderabad cycle track, ridden at night and turned into a 3D Gaussian splat</p>
+  <p class="lede">
+    One late ride down the covered cycle track, a camera held up in one hand, and a
+    question: can a night-time video become a place you can fly through? This is how
+    the footage became a splat, and where it goes next: Unreal Engine.
+  </p>
+
+  <dl class="facts">
+    <div><dt>Type</dt><dd>Personal R&amp;D</dd></div>
+    <div><dt>Capture</dt><dd>Handheld video, on a bike</dd></div>
+    <div><dt>Pipeline</dt><dd>Frames → camera tracking → 3DGS</dd></div>
+    <div><dt>Next</dt><dd>Unreal Engine cinematic</dd></div>
+  </dl>
+
+  <section class="note">
+    <h2><span>01 · Capture</span>Riding with the camera up</h2>
+    <p>
+      The whole capture is a single slow ride down the track at night. I kept the
+      camera steady and pointed forward and rode as smoothly as I could.
+      Night footage is the hard mode for splats: noise, motion blur and very little
+      sideways movement for the solver to work with.
+    </p>
+  </section>
+
+  <div class="row three">
+    <div class="frame tall"><video class="loop" data-src="../assets/lab/night-ride/capture.mp4" poster="../assets/lab/night-ride/capture.jpg" muted loop playsinline preload="none" aria-label="Riding a bicycle down the covered cycle track at night, holding a camera up to film"></video><span class="cap">The capture ride</span></div>
+    <div class="frame tall"><video class="loop" data-src="../assets/lab/night-ride/tracking.mp4" poster="../assets/lab/night-ride/tracking.jpg" muted loop playsinline preload="none" aria-label="Camera positions shown as orange frustums along a sparse point cloud of the track"></video><span class="cap">Camera tracking</span></div>
+    <div class="frame tall"><video class="loop" data-src="../assets/lab/night-ride/cameras.mp4" poster="../assets/lab/night-ride/cameras.jpg" muted loop playsinline preload="none" aria-label="Solved cameras drawn as white frustums inside the training splat"></video><span class="cap">Cameras inside the splat</span></div>
+  </div>
+
+  <section class="note">
+    <h2><span>02 · Tracking</span>Finding where every frame was taken</h2>
+    <p>
+      The video is split into frames and matched feature by feature, so each frame
+      gets its exact camera position. All 114 cameras landed in a clean line down the
+      track, with a sparse point cloud of about 9.8k points and 0.55 px mean
+      reprojection error. That point cloud is the seed the splat grows from.
+    </p>
+  </section>
+
+  <div class="frame p43 zoom"><img src="../assets/lab/night-ride/error-map.jpg" alt="Training view: the original photo on the left, the splat render on the right, and a detail error map below" loading="lazy"><span class="cap">Photo vs. splat render, with the error map below</span></div>
+
+  <section class="note">
+    <h2><span>03 · Training</span>Teaching a million splats to look like the street</h2>
+    <p>
+      Training renders the scene from each camera, compares it with the real photo and
+      nudges about a million Gaussians until they match. The error map shows what's
+      left: almost all the mistakes sit on fine edges such as lane paint, railings and plants.
+      The light, the road and the solar roof are already there.
+    </p>
+  </section>
+
+  <div class="row two">
+    <div class="frame tall"><video class="loop" data-src="../assets/lab/night-ride/flythrough.mp4" poster="../assets/lab/night-ride/flythrough.jpg" muted loop playsinline preload="none" aria-label="Flying through the trained Gaussian splat of the cycle track"></video><span class="cap">First fly-through</span></div>
+    <div class="frame tall" style="display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,#f3eee4 0 14px,#ebe4d6 14px 28px);text-align:center;padding:24px">
+      <div><div style="font-size:3rem;line-height:1;margin-bottom:12px" aria-hidden="true">🎮</div>
+      <b style="font-size:1.2rem">Next stop: Unreal Engine</b>
+      <p style="color:var(--muted);margin-top:6px">The splat goes into Unreal for camera moves, fog and a proper cinematic. Coming soon.</p></div>
+    </div>
+  </div>
+
+  <section class="note">
+    <h2><span>What I learned</span>Notes for the next capture</h2>
+    <p>
+      Walk slower than you ride. Shoot at blue hour, not full night. Do a second pass
+      in the other direction at a different height. The splat stays sharp right
+      along the path the camera travelled and gets dreamy the further you drift
+      from it, which suits a night mood piece anyway.
+    </p>
+  </section>
+
+  <div class="pager">
+    <a class="btn" href="../index.html#lab">← Back to the Lab</a>
+    <a class="btn fill" href="../index.html#contact">Say hi →</a>
+  </div>
+</main>
+<footer>© 2026 Lokesh Rawat — made with a bike, a camera &amp; a lot of GPU 🚲</footer>
+<script src="../assets/motion.js"></script>
+<script src="../assets/lightbox.js"></script>
+</body>
+</html>
