@@ -10,6 +10,15 @@
   .tall{aspect-ratio:9/16}
   .p43{aspect-ratio:4/3}
   .kicker{background:var(--sky)}
+  .splat{aspect-ratio:16/9;background:#0d0d0c}
+  .splat img,.splat iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+  .splat .go{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:inherit;font-weight:800;cursor:pointer;
+    background:var(--bg);color:var(--ink);border:1.5px solid var(--ink);border-radius:999px;padding:12px 24px;
+    box-shadow:4px 4px 0 var(--ink);
+  }
+  .splat .go:hover{background:var(--coral);color:#fff}
+  .hint{color:var(--muted);font-size:.9rem;margin:10px 0 0}
 </style>
 </head>
 <body>
@@ -29,11 +38,18 @@
     the footage became a splat, and where it goes next: Unreal Engine.
   </p>
 
+  <div class="frame splat" id="splat">
+    <img src="../assets/lab/night-ride/card.jpg" alt="Night Ride Gaussian splat preview">
+    <button class="go" type="button">▶ Fly through it in 3D</button>
+  </div>
+  <p class="hint">Loads the live splat from SuperSplat (about 14 MB). Drag to look around, scroll to move.
+    <a href="https://superspl.at/scene/92c1386f" target="_blank" rel="noopener">Open full screen ↗</a></p>
+
   <dl class="facts">
     <div><dt>Type</dt><dd>Personal R&amp;D</dd></div>
     <div><dt>Capture</dt><dd>Handheld video, on a bike</dd></div>
     <div><dt>Pipeline</dt><dd>Frames → camera tracking → 3DGS</dd></div>
-    <div><dt>Next</dt><dd>Unreal Engine cinematic</dd></div>
+    <div><dt>Viewer</dt><dd>Live in the browser</dd></div>
   </dl>
 
   <section class="note">
@@ -101,5 +117,16 @@
 <footer>© 2026 Lokesh Rawat — made with a bike, a camera &amp; a lot of GPU 🚲</footer>
 <script src="../assets/motion.js"></script>
 <script src="../assets/lightbox.js"></script>
+<script>
+  /* load the heavy 3D viewer only when asked */
+  document.querySelector('#splat .go').addEventListener('click', () => {
+    const f = document.createElement('iframe');
+    f.src = 'https://superspl.at/s?id=92c1386f';
+    f.title = 'Night Ride: Gaussian splat';
+    f.allow = 'fullscreen; xr-spatial-tracking; autoplay';
+    f.setAttribute('allowfullscreen', '');
+    document.getElementById('splat').replaceChildren(f);
+  });
+</script>
 </body>
 </html>
