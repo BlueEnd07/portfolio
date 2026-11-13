@@ -157,6 +157,12 @@
     .case:nth-child(even) .case-media{order:0;border-left:0}
     .case-media{border-right:0;border-bottom:1.5px solid var(--ink);min-height:0;aspect-ratio:4/3}
   }
+  .minis{display:grid;grid-template-columns:repeat(2,1fr);gap:34px}
+  .case.mini,.case.mini:nth-child(even){grid-template-columns:1fr;grid-template-rows:auto 1fr}
+  .case.mini .case-media,.case.mini:nth-child(even) .case-media{order:0;border-left:0;border-right:0;border-bottom:1.5px solid var(--ink);min-height:0;aspect-ratio:4/3}
+  .case.mini .case-body{justify-content:flex-start;padding:24px 26px 28px}
+  .case.mini h3{font-size:clamp(1.3rem,2.2vw,1.6rem)}
+  @media(max-width:820px){.minis{grid-template-columns:1fr}}
   @media(prefers-reduced-motion:reduce){.case,.case-media img{transition:none}}
 
   /* reveal */
@@ -260,6 +266,7 @@
     transition:transform .15s,box-shadow .15s;
   }
   .mail:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+  @media(max-width:480px){.mail{font-size:1.05rem;padding:12px 20px;max-width:100%;overflow-wrap:anywhere}}
 
   footer{
     border-top:1.5px solid var(--line);padding:26px 6vw;display:flex;
@@ -300,47 +307,69 @@
 <section id="work">
   <div class="reveal">
     <span class="kicker k-sky">Selected work</span>
-    <h2>3D Artist at Keus 💼</h2>
+    <h2>Keus &amp; personal work 💼</h2>
     <p class="desc">
-      2 years of in-house product animations and renders for Keus smart-home products.
-      Each project opens a full case study.
+      2 years of in-house product animations and renders for Keus smart-home products,
+      plus a few personal projects. Each one opens a full project page.
     </p>
   </div>
   <div class="cases">
-    <a class="case reveal" href="projects/keus-consoles.html">
+    <a class="case reveal" href="projects/keus.html">
       <div class="case-media split">
         <video class="loop" data-src="assets/work/motion/elemental-orbit-bronze.mp4" poster="assets/work/motion/elemental-orbit-bronze.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
-        <video class="loop" data-src="assets/work/motion/elemental-pushin-bronze.mp4" poster="assets/work/motion/elemental-pushin-bronze.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
-        <video class="loop" data-src="assets/work/motion/elemental-truck-graphite.mp4" poster="assets/work/motion/elemental-truck-graphite.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <video class="loop" data-src="assets/work/motion/zigbee-chip.mp4" poster="assets/work/motion/zigbee-chip.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <img src="assets/work/spaces/living-console-m.jpg" alt="" loading="lazy">
       </div>
       <div class="case-body">
-        <span class="client">In-house · Keus</span>
-        <h3>Keus Consoles — Elemental &amp; M Pro</h3>
-        <p>Launch animations and hero renders for the Elemental range: camera moves, brushed metal on silk, every finish.</p>
-        <div class="chips"><span>Animation</span><span>Camera moves</span><span>Product</span></div>
+        <span class="client">In-house · Keus · 2 years</span>
+        <h3>Keus — consoles, wireless &amp; spaces</h3>
+        <p>Two years of product animations and renders: the Elemental console range, the wireless tech inside it, and the products in photoreal rooms.</p>
+        <div class="chips"><span>Animation</span><span>Product</span><span>Interiors</span></div>
         <span class="go">View case study →</span>
       </div>
     </a>
-    <a class="case reveal" href="projects/keus-wireless.html">
-      <div class="case-media"><video class="loop" data-src="assets/work/motion/zigbee-chip.mp4" poster="assets/work/motion/zigbee-chip.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
-      <div class="case-body">
-        <span class="client">In-house · Keus</span>
-        <h3>Keus Wireless — Zigbee &amp; ecosystem</h3>
-        <p>Animated renders of the wireless chip, the hardware and the full Keus product family.</p>
-        <div class="chips"><span>Tech animation</span><span>Hardware</span><span>Launch loops</span></div>
-        <span class="go">View case study →</span>
-      </div>
-    </a>
-    <a class="case reveal" href="projects/keus-spaces.html">
-      <div class="case-media"><img src="assets/work/spaces/living-console-m.jpg" alt="" loading="lazy"></div>
-      <div class="case-body">
-        <span class="client">In-house · Keus</span>
-        <h3>Keus in Spaces — interiors &amp; archviz</h3>
-        <p>Consoles and sockets in fully built photoreal rooms, plus the Keus × Stonelife exterior.</p>
-        <div class="chips"><span>Interiors</span><span>Set dressing</span><span>Archviz</span></div>
-        <span class="go">View case study →</span>
-      </div>
-    </a>
+    <div class="minis">
+      <a class="case mini reveal" href="projects/nJJV36.html">
+        <div class="case-media"><img src="assets/artstation/nJJV36_0.jpg" alt="" loading="lazy"></div>
+        <div class="case-body">
+          <span class="client">Personal</span>
+          <h3>JungleCat Beverage</h3>
+          <p>Product animation and renders for a drink can, made in Blender.</p>
+          <div class="chips"><span>Product animation</span><span>Label design</span><span>Lighting</span></div>
+          <span class="go">View project →</span>
+        </div>
+      </a>
+      <a class="case mini reveal" href="projects/0ldGy8.html">
+        <div class="case-media"><img src="assets/artstation/0ldGy8_0.jpg" alt="" loading="lazy"></div>
+        <div class="case-body">
+          <span class="client">Personal</span>
+          <h3>Blender Pills</h3>
+          <p>A made-up product: embossed pills and branded packaging, modelled and textured in Blender.</p>
+          <div class="chips"><span>Product concept</span><span>Packaging</span><span>Procedural textures</span></div>
+          <span class="go">View project →</span>
+        </div>
+      </a>
+      <a class="case mini reveal" href="projects/NyqEvd.html">
+        <div class="case-media"><img src="assets/artstation/NyqEvd_0.jpg" alt="" loading="lazy"></div>
+        <div class="case-body">
+          <span class="client">Personal · Experiment</span>
+          <h3>Pixel-Art Game House</h3>
+          <p>Pixel art is hard, so I made it from 3D instead: a game house rendered as pixel art.</p>
+          <div class="chips"><span>Pixel art from 3D</span><span>Game asset</span></div>
+          <span class="go">View project →</span>
+        </div>
+      </a>
+      <a class="case mini reveal" href="projects/4NRJbl.html">
+        <div class="case-media"><img src="assets/artstation/4NRJbl_0.jpg" alt="" loading="lazy"></div>
+        <div class="case-body">
+          <span class="client">Personal</span>
+          <h3>Stylized Car Animation</h3>
+          <p>A cartoon-shaded car with toon materials, painterly trees and a bouncy camera.</p>
+          <div class="chips"><span>NPR / toon</span><span>Animation</span></div>
+          <span class="go">View project →</span>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -435,10 +464,7 @@ const RENDERS = [
   {img:"assets/artstation/XJgW8R_0.jpg", title:"Hydrocre+ Pills"},
   {img:"assets/artstation/K3E069_0.jpg", title:"Dr. Blender Serum"},
   {img:"assets/artstation/a0DnAJ_0.jpg", title:"Interior No. 1"},
-  {img:"assets/artstation/0ldGy8_0.jpg", title:"Blender Pills"},
-  {img:"assets/artstation/4NRJbl_0.jpg", title:"Car Animation", video:true},
   {img:"assets/artstation/lGEZLk_0.jpg", title:"Luxury Perfume"},
-  {img:"assets/artstation/nJJV36_0.jpg", title:"JungleCat Beverage"},
   {img:"assets/artstation/dKyQDX_0.jpg", title:"Mamaearth"},
   {img:"assets/artstation/YBGJn6_0.jpg", title:"Headphones"},
   {img:"assets/artstation/P6EQL8_1.jpg", title:"Cetaphil"},
