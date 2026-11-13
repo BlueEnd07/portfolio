@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keus Office — Digital Twin — Lokesh Rawat</title>
+<meta name="description" content="A Gaussian splat digital twin of the Keus office entrance in Hyderabad, explorable in 3D, by Lokesh Rawat.">
+<link rel="stylesheet" href="../assets/case.css">
+<style>
+  .tall{aspect-ratio:9/16}
+  .cine{aspect-ratio:16/9}
+  .p43{aspect-ratio:4/3}
+  .kicker{background:var(--sky)}
+  .splat{aspect-ratio:16/9;background:#0d0d0c}
+  .splat img,.splat iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+  .splat .go{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:inherit;font-weight:800;cursor:pointer;
+    background:var(--bg);color:var(--ink);border:1.5px solid var(--ink);border-radius:999px;padding:12px 24px;
+    box-shadow:4px 4px 0 var(--ink);
+  }
+  .splat .go:hover{background:var(--coral);color:#fff}
+  .hint{color:var(--muted);font-size:.9rem;margin:10px 0 0}
+</style>
+</head>
+<body>
+<nav>
+  <a class="brand" href="../index.html">LR ✦</a>
+  <a href="../index.html#lab">← Lab</a>
+  <a href="../index.html#contact">Say hi</a>
+</nav>
+
+<main>
+  <span class="kicker">Lab · Personal · Digital twin</span>
+  <h1>Keus Office</h1>
+  <p class="sub">The office entrance, captured and turned into a 3D Gaussian splat</p>
+  <p class="lede">
+    The place I walk into every morning: the lift lobby, the glass doors and the
+    reception behind them. A short capture walk, turned into a Gaussian splat you can
+    step into and look around, right here in the browser.
+  </p>
+
+  <div class="frame splat" id="splat">
+    <img src="../assets/lab/keus-office/poster.jpg" alt="Gaussian splat of the Keus office lobby: stone floor, lit ceiling cove and the glass entrance to reception">
+    <button class="go" type="button">▶ Fly through it in 3D</button>
+  </div>
+  <p class="hint">Loads the live splat from SuperSplat. Drag to look around, scroll to move.
+    <a href="https://superspl.at/scene/0ad2cab8" target="_blank" rel="noopener">Open full screen ↗</a></p>
+
+  <dl class="facts">
+    <div><dt>Type</dt><dd>Personal R&amp;D</dd></div>
+    <div><dt>Subject</dt><dd>Keus office entrance</dd></div>
+    <div><dt>Output</dt><dd>3D Gaussian splat</dd></div>
+    <div><dt>Viewer</dt><dd>Live in the browser</dd></div>
+  </dl>
+
+  <section class="note">
+    <h2><span>Why an interior</span>A first step towards digital twins</h2>
+    <p>
+      After the night ride outdoors, an interior is a very different test: steady light,
+      reflective glass, polished stone and plain walls with little texture to track.
+      The goal is the same one as with my desk capture: real rooms you can walk through,
+      light and reuse in 3D work.
+    </p>
+  </section>
+
+  <div class="pager">
+    <a class="btn" href="night-ride-splat.html">← Night Ride</a>
+    <a class="btn fill" href="../index.html#lab">Back to the Lab →</a>
+  </div>
+</main>
+<footer>© 2026 Lokesh Rawat — made with a camera &amp; a lot of GPU 🏢</footer>
+<script>
+  /* load the heavy 3D viewer only when asked */
+  document.querySelector('#splat .go').addEventListener('click', () => {
+    const f = document.createElement('iframe');
+    f.src = 'https://superspl.at/s?id=0ad2cab8';
+    f.title = 'Keus Office: Gaussian splat';
+    f.allow = 'fullscreen; xr-spatial-tracking; autoplay';
+    f.setAttribute('allowfullscreen', '');
+    document.getElementById('splat').replaceChildren(f);
+  });
+</script>
+</body>
+</html>
