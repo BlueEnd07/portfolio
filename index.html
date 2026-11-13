@@ -186,7 +186,9 @@
   .lab-body{padding:18px 20px 22px}
   .lab-link{display:inline-block;margin-top:12px;font-weight:700;color:var(--ink);border-bottom:2px solid var(--coral)}
   .lab-link:hover{color:var(--coral)}
-  a.lab-media{display:block}
+  a.lab-card{color:inherit;text-decoration:none;transition:opacity .6s ease,transform .2s ease,box-shadow .2s ease}
+  a.lab-card:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--ink)}
+  a.lab-card:hover .lab-link{color:var(--coral)}
   .lab-body .status{
     display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
     border:1.5px solid var(--ink);border-radius:999px;padding:2px 10px;margin-bottom:10px;background:var(--bg);
@@ -350,7 +352,7 @@
     <h2>What I'm exploring right now 🧪</h2>
     <p class="desc">
       Real-time engines and captured reality. These are in progress right now.
-      When splats go live, they load in 3D, so you can drag to look around. I also build
+      Open a project to see how it was made and fly through the splat in 3D. I also build
       AI workflows in ComfyUI and train my own LoRAs.
     </p>
   </div>
@@ -460,8 +462,8 @@ const LAB = [
    desc:"This card has been blurred for your protection. Proceed with caution."},
   {type:"splat", status:"live", title:"Night Ride — splat to Unreal",
    poster:"assets/lab/night-ride/unreal-reveal.jpg", loop:"assets/lab/night-ride/unreal-reveal.mp4",
-   embed:"https://superspl.at/s?id=92c1386f", link:"projects/night-ride-splat.html",
-   desc:"A night ride down a Hyderabad cycle track, filmed on a bike, turned into a 3D Gaussian splat and brought into Unreal Engine for a cinematic. Fly through the splat right here."},
+   link:"projects/night-ride-splat.html",
+   desc:"A night ride down a Hyderabad cycle track, filmed on a bike, turned into a 3D Gaussian splat and brought into Unreal Engine for a cinematic. Open it to see how it was made and fly through the splat in 3D."},
 ];
 
 function labMedia(it, i){
@@ -469,10 +471,9 @@ function labMedia(it, i){
   if(!ready) return `<div class="lab-media empty" aria-hidden="true">${it.icon||'✨'}</div>`;
   if(it.type==='image') return `<div class="lab-media"><img src="${it.img}" alt="${it.title}" loading="lazy"></div>`;
   if(it.type==='video' && it.src) return `<div class="lab-media"><video src="${it.src}" poster="${it.poster||''}" muted loop playsinline controls preload="none"></video></div>`;
-  if(!it.embed && it.link) return `<a class="lab-media" href="${it.link}"><img src="${it.poster}" alt="${it.title}" loading="lazy"></a>`;
   return `<div class="lab-media">${it.loop?`<video class="loop" data-src="${it.loop}" poster="${it.poster}" muted loop playsinline preload="none" aria-label="${it.title}"></video>`
             : it.poster?`<img src="${it.poster}" alt="${it.title}" loading="lazy">`:''}
-            <button class="play" data-lab="${i}">▶ Explore in 3D</button></div>`;
+            ${it.embed && !it.link?`<button class="play" data-lab="${i}">▶ Explore in 3D</button>`:''}</div>`;
 }
 document.getElementById('labGrid').innerHTML = LAB.map((it,i)=> it.type==='nsfc' ? `
   <button type="button" class="lab nsfc reveal ${it.big?'big':''}" id="nsfcCard" aria-haspopup="dialog">
@@ -484,15 +485,15 @@ document.getElementById('labGrid').innerHTML = LAB.map((it,i)=> it.type==='nsfc'
       <p>${it.desc}</p>
     </div>
   </button>` : `
-  <article class="lab reveal ${it.big?'big':''}">
+  <${it.link?`a href="${it.link}"`:'article'} class="lab reveal ${it.link?'lab-card':''} ${it.big?'big':''}">
     ${labMedia(it,i)}
     <div class="lab-body">
       <span class="status ${it.status==='live'?'live':'wip'}">${it.status==='live'?'Live':'In progress'}</span>
       <h3>${it.title}</h3>
       <p>${it.desc}</p>
-      ${it.link?`<a class="lab-link" href="${it.link}">Behind the scenes →</a>`:''}
+      ${it.link?`<span class="lab-link">See the project →</span>`:''}
     </div>
-  </article>`).join('');
+  </${it.link?'a':'article'}>`).join('');
 /* splats are heavy: only load the 3D viewer when someone clicks */
 document.getElementById('labGrid').addEventListener('click',e=>{
   const b = e.target.closest('.play'); if(!b) return;
