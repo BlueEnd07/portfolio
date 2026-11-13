@@ -17,6 +17,14 @@
   .disclaimer p{color:var(--muted);margin:0}
   .wide{aspect-ratio:16/10}
   .sq{aspect-ratio:1/1}
+  .sheet{aspect-ratio:16/9;margin-bottom:22px}
+  .cine{aspect-ratio:16/9}
+  .tall{aspect-ratio:9/16}
+  .cmp{aspect-ratio:1080/1240}
+  .stack{display:grid;gap:22px;align-content:start}
+  .solo{max-width:420px;margin:0 auto 44px}
+  main > .frame.wide{margin-bottom:22px}
+  .soon{margin-top:20px}
   .soon{
     border:1.5px solid var(--ink);border-radius:var(--radius);box-shadow:6px 6px 0 var(--ink);
     padding:64px 24px;text-align:center;
@@ -56,10 +64,70 @@
     the only place where the robot helped. No artists were replaced in the making of these images.</p>
   </div>
 
+  <section class="note">
+    <h2><span>01 · Heritage interiors</span>A South Indian mansion that doesn't exist</h2>
+    <p>
+      A series of rooms in one imagined heritage home: red oxide floors, carved teak,
+      jaali arches, brass lamps and Tanjore-style paintings. I wanted the light to stay
+      the same across every room, so it reads as one house, from golden hour to lamp light.
+    </p>
+  </section>
+
+  <div class="frame wide zoom"><img src="../assets/nsfc/house-5.jpg" alt="Grand living hall with carved teak pillars, green velvet sofas and brass lamps" loading="lazy"><span class=cap>Living hall</span></div>
+  <div class="row two">
+    <div class="frame wide zoom"><img src="../assets/nsfc/house-2.jpg" alt="Bedroom with a carved daybed under arched jaali windows at sunrise" loading="lazy"><span class=cap>Morning light</span></div>
+    <div class="frame wide zoom"><img src="../assets/nsfc/house-1.jpg" alt="Four-poster bed with a white canopy and sun patterns on a red oxide floor" loading="lazy"><span class=cap>Master bedroom</span></div>
+  </div>
+  <div class="row two">
+    <div class="frame wide zoom"><img src="../assets/nsfc/house-3.jpg" alt="The bedroom at dusk lit by an oil lamp on the floor" loading="lazy"><span class=cap>Lamp light</span></div>
+    <div class="frame wide zoom"><img src="../assets/nsfc/house-4.jpg" alt="Long colonnaded hall with green sofas and carved chairs" loading="lazy"><span class=cap>The long hall</span></div>
+  </div>
+
+  <section class="note">
+    <h2><span>02 · Character</span>One person, every angle</h2>
+    <p>
+      An original character, designed so she stays the same from shot to shot: a full
+      turnaround sheet with front, three-quarter, side and back, plus close-ups. It's
+      the reference everything after this is built on.
+    </p>
+  </section>
+
+  <div class="frame sheet zoom"><img src="../assets/nsfc/character-sheet.jpg" alt="Character turnaround sheet: a woman with braids, glasses, a red tee and black cargo pants from five angles plus face close-ups" loading="lazy"><span class=cap>Turnaround sheet</span></div>
+
+  <section class="note">
+    <h2><span>03 · Video</span>Putting her into real footage</h2>
+    <p>
+      Next test: swap the character into an existing webcam clip and keep the original
+      motion, lighting and room. A pose and face-landmark pass drives the movement.
+      I compared MiniMax H3 at 8 steps with a turbo LoRA against the full 20 steps:
+      the fast version is close, but the 20-step pass holds the face, glasses and the
+      can's label much better.
+    </p>
+  </section>
+
+  <div class="row two">
+    <div class="frame cmp"><video class="loop" data-src="../assets/nsfc/swap-compare.mp4" poster="../assets/nsfc/swap-compare.jpg" muted loop playsinline preload="none" aria-label="The character swapped into a webcam video, 8-step turbo version above and 20-step version below"></video><span class="cap">8 steps + turbo LoRA vs. 20 steps</span></div>
+    <div class="stack">
+      <div class="frame cine zoom"><img src="../assets/nsfc/character-swap.jpg" alt="The character in a red tee and glasses, swapped into the room from the original video" loading="lazy"><span class=cap>First frame of the swap</span></div>
+      <div class="frame cine"><video class="loop" data-src="../assets/nsfc/pose-driver.mp4" poster="../assets/nsfc/pose-driver.jpg" muted loop playsinline preload="none" aria-label="Face landmarks and hand skeleton extracted from the source video"></video><span class="cap">The pose pass driving the motion</span></div>
+    </div>
+  </div>
+
+  <section class="note">
+    <h2><span>04 · Product</span>An AI pass on a real product</h2>
+    <p>
+      Can a model place a real Keus console in a mood shot without breaking it? The
+      bronze finish and the soft leaf shadows came out well. The icons on the buttons
+      are where it still drifts, which is exactly why the real launch work is rendered in 3D.
+    </p>
+  </section>
+
+  <div class="solo"><div class="frame tall zoom"><img src="../assets/nsfc/console-shot.jpg" alt="A bronze smart-home console on a plaster wall with leaf shadows in warm sunlight" loading="lazy"><span class=cap>AI mood shot</span></div></div>
+
   <div class="soon">
     <div class="big" aria-hidden="true">🤖🍳</div>
     <h2>The robot is still cooking.</h2>
-    <p>New AI experiments are on the way. Check back soon, if you dare.</p>
+    <p>More AI experiments are on the way. Check back soon, if you dare.</p>
   </div>
 
   <section class="note">
@@ -73,5 +141,7 @@
   </div>
 </main>
 <footer>© 2026 Lokesh Rawat — this page was made with AI &amp; a guilty conscience 🤖</footer>
+<script src="../assets/motion.js"></script>
+<script src="../assets/lightbox.js"></script>
 </body>
 </html>
