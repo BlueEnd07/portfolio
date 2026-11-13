@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaussian Splats — Lokesh Rawat</title>
+<meta name="description" content="Gaussian splats by Lokesh Rawat: a night cycle track, the Keus office lobby and a Zoro plush, all explorable in 3D.">
+<link rel="stylesheet" href="../assets/case.css">
+<style>
+  .tall{aspect-ratio:9/16}
+  .cine{aspect-ratio:16/9}
+  .p43{aspect-ratio:4/3}
+  .kicker{background:var(--sky)}
+  .splat{aspect-ratio:16/9;background:#0d0d0c}
+  .splat img,.splat iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+  .splat .go{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:inherit;font-weight:800;cursor:pointer;
+    background:var(--bg);color:var(--ink);border:1.5px solid var(--ink);border-radius:999px;padding:12px 24px;
+    box-shadow:4px 4px 0 var(--ink);
+  }
+  .splat .go:hover{background:var(--coral);color:#fff}
+  .hint{color:var(--muted);font-size:.9rem;margin:10px 0 0}
+  .hint a{color:var(--ink);font-weight:700}
+</style>
+</head>
+<body>
+<nav>
+  <a class="brand" href="../index.html">LR ✦</a>
+  <a href="../index.html#lab">← Lab</a>
+  <a href="../index.html#contact">Say hi</a>
+</nav>
+
+<main>
+  <span class="kicker">Lab · Personal · Gaussian splatting</span>
+  <h1>Gaussian Splats</h1>
+  <p class="sub">Real places and things, captured on camera and turned into 3D you can explore</p>
+  <p class="lede">
+    Three captures at three very different scales: a cycle track at night, an office
+    lobby and a toy on my desk. Each one loads live from SuperSplat when you click it,
+    so you can fly around inside it right here in the browser.
+  </p>
+
+  <dl class="facts">
+    <div><dt>Type</dt><dd>Personal R&amp;D</dd></div>
+    <div><dt>Captures</dt><dd>Street · Interior · Object</dd></div>
+    <div><dt>Pipeline</dt><dd>Video → camera tracking → 3DGS</dd></div>
+    <div><dt>Viewer</dt><dd>Live in the browser</dd></div>
+  </dl>
+
+  <section class="note">
+    <h2><span>01 · Street</span>Night Ride</h2>
+    <p>
+      A night ride down a Hyderabad cycle track, filmed on a bike with the camera held
+      up in one hand. About a million splats, later brought into Unreal Engine for a cinematic.
+    </p>
+  </section>
+
+  <div class="frame splat" data-embed="https://superspl.at/s?id=92c1386f" data-title="Night Ride">
+    <img src="../assets/lab/splats/night-ride.jpg" alt="Gaussian splat render of the covered cycle track at night, with lane markings and street lights">
+    <button class="go" type="button">▶ Fly through it in 3D</button>
+  </div>
+  <p class="hint">Drag to look around, scroll to move.
+    <a href="https://superspl.at/scene/92c1386f" target="_blank" rel="noopener">Open full screen ↗</a> · <a href="night-ride-splat.html">How I made it →</a></p>
+
+  <section class="note">
+    <h2><span>02 · Interior</span>Keus Office</h2>
+    <p>
+      The office entrance I walk into every morning: the lift lobby, the glass doors and
+      the reception behind them. Glass, polished stone and plain walls make interiors a very
+      different test, and a first step towards digital twins of real rooms.
+    </p>
+  </section>
+
+  <div class="frame splat" data-embed="https://superspl.at/s?id=0ad2cab8" data-title="Keus Office">
+    <img src="../assets/lab/keus-office/poster.jpg" alt="Gaussian splat of the Keus office lobby: stone floor, lit ceiling cove and the glass entrance to reception">
+    <button class="go" type="button">▶ Fly through it in 3D</button>
+  </div>
+  <p class="hint">Drag to look around, scroll to move.
+    <a href="https://superspl.at/scene/0ad2cab8" target="_blank" rel="noopener">Open full screen ↗</a></p>
+
+  <section class="note">
+    <h2><span>03 · Object</span>Zoro Plush</h2>
+    <p>
+      Something much smaller: a Zoro plush, captured all the way around and isolated on
+      black. Soft fabric and fuzzy hair are hard to model by hand but come out naturally
+      as splats, so you can spin it and get close to the stitching.
+    </p>
+  </section>
+
+  <div class="frame splat" data-embed="https://superspl.at/s?id=c2b480c7" data-title="Zoro Plush">
+    <img src="../assets/lab/zoro/poster.jpg" alt="Gaussian splat of a Zoro plush toy with green hair and a pink sash, floating on black">
+    <button class="go" type="button">▶ Fly through it in 3D</button>
+  </div>
+  <p class="hint">Drag to look around, scroll to move.
+    <a href="https://superspl.at/scene/c2b480c7" target="_blank" rel="noopener">Open full screen ↗</a></p>
+
+  <div class="pager">
+    <a class="btn" href="../index.html#lab">← Back to the Lab</a>
+    <a class="btn fill" href="night-ride-splat.html">Night Ride: behind the scenes →</a>
+  </div>
+</main>
+<footer>© 2026 Lokesh Rawat — made with a camera &amp; a lot of GPU ✦</footer>
+<script>
+  /* load a 3D viewer only when asked, and only one at a time to spare the GPU */
+  const frames = [...document.querySelectorAll('.splat')];
+  const saved = new Map(frames.map(el => [el, el.innerHTML]));
+  function close(el){ el.innerHTML = saved.get(el); }
+  document.addEventListener('click', e => {
+    const b = e.target.closest('.splat .go'); if(!b) return;
+    const el = b.closest('.splat');
+    frames.forEach(o => { if(o !== el && o.querySelector('iframe')) close(o); });
+    const f = document.createElement('iframe');
+    f.src = el.dataset.embed; f.title = el.dataset.title + ': Gaussian splat';
+    f.allow = 'fullscreen; xr-spatial-tracking; autoplay';
+    f.setAttribute('allowfullscreen', '');
+    el.replaceChildren(f);
+  });
+</script>
+</body>
+</html>
